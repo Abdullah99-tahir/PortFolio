@@ -1,0 +1,45 @@
+#experience {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 3rem;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--cyan), var(--border), transparent);
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 3.5rem 2.5rem;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: all 0.6s;
+}
+.tl-item.visible { opacity: 1; transform: none; }
+
+.tl-dot {
+  position: absolute;
+  left: -2.05rem; top: 0.25rem;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.tl-year  { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.tl-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+.tl-sub   { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text2); margin-bottom: 0.7rem; }
+.tl-body  { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text3); line-height: 1.8; }
+
+@media (max-width: 900px) {
+  #experience { padding: 5rem 1.5rem; }
+}

@@ -1,0 +1,90 @@
+#projects {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 3rem;
+  background: var(--bg2);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+  transition: all 0.35s;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--cyan-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.project-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(0,229,255,.06);
+}
+.project-card:hover::after { opacity: 1; }
+
+.project-card.featured {
+  grid-column: span 2;
+  border-color: rgba(0,229,255,.2);
+}
+
+.project-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.2rem;
+}
+.project-icon  { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text); }
+.project-desc  {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
+}
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+.p-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.7rem;
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0,229,255,.2);
+  color: var(--cyan);
+  letter-spacing: 0.06em;
+}
+
+.project-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.project-link:hover { opacity: 1; }
+.project-link::after { content: '→'; }
+
+@media (max-width: 900px) {
+  #projects { padding: 5rem 1.5rem; }
+  .project-card.featured { grid-column: span 1; }
+}

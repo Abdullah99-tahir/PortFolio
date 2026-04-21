@@ -1,0 +1,146 @@
+/* ── GLOBAL STYLES ── */
+:root {
+  --bg: #050a0f;
+  --bg2: #070e16;
+  --surface: rgba(10, 20, 35, 0.85);
+  --cyan: #00e5ff;
+  --cyan2: #00b8d9;
+  --cyan-dim: rgba(0, 229, 255, 0.12);
+  --cyan-glow: rgba(0, 229, 255, 0.25);
+  --green: #39ff14;
+  --amber: #ffb300;
+  --text: #e0eaf5;
+  --text2: #8aa4bf;
+  --text3: #4a6680;
+  --border: rgba(0, 229, 255, 0.12);
+  --border-hover: rgba(0, 229, 255, 0.35);
+  --font-head: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-head);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ── SHARED SECTION STYLES ── */
+.section-max {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--cyan);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--cyan);
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
+.section-heading {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 4rem;
+}
+
+.highlight {
+  color: var(--cyan);
+}
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── SHARED BADGES ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid;
+  margin: 0.3rem;
+}
+.badge::before { content: '●'; font-size: 0.45rem; }
+.badge-cyan  { border-color: rgba(0,229,255,.35); color: var(--cyan);  background: var(--cyan-dim); }
+.badge-green { border-color: rgba(57,255,20,.25); color: var(--green); background: rgba(57,255,20,.06); }
+.badge-amber { border-color: rgba(255,179,0,.25); color: var(--amber); background: rgba(255,179,0,.06); }
+
+/* ── CORNER DECORATION ── */
+.corner-deco { position: absolute; width: 60px; height: 60px; }
+.corner-deco.tl { top: 0; left: 0; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+.corner-deco.tr { top: 0; right: 0; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+.corner-deco.bl { bottom: 0; left: 0; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+.corner-deco.br { bottom: 0; right: 0; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes blink    { 0%,100% { opacity:1; } 50% { opacity:0; } }
+@keyframes scrollPulse { 0%,100% { transform:scaleY(1);opacity:1; } 50% { transform:scaleY(.7);opacity:.4; } }
+@keyframes glitch1  { 0%,90%,100%{transform:none;opacity:0}91%{transform:translate(-2px,1px);opacity:.8}92%{transform:translate(2px,-1px);opacity:.8}93%{transform:none;opacity:0} }
+@keyframes glitch2  { 0%,93%,100%{transform:none;opacity:0}94%{transform:translate(2px,-1px);opacity:.8}95%{transform:translate(-2px,1px);opacity:.8}96%{transform:none;opacity:0} }
+
+@media (max-width: 900px) {
+  .section-max { padding: 0 0.5rem; }
+}

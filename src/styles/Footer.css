@@ -1,0 +1,17 @@
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left  { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text3); }
+.footer-left span { color: var(--cyan); }
+.footer-right { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text3); }
+
+@media (max-width: 900px) {
+  footer { flex-direction: column; gap: 0.8rem; text-align: center; padding: 2rem 1.5rem; }
+}
