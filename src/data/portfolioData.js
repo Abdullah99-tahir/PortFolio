@@ -184,7 +184,7 @@ export const timeline = [
     id: 4,
     year: 'Sep 2022 — Apr 2024',
     title: 'FSc I.Cs',
-    sub: 'KIPS Education System · Gujranwala',
+    sub: 'KIPS College Boys Campus · Gujranwala',
     body: 'Completed FSc (I.Cs) with strong academic foundations in mathematics, physics, and computer science — the gateway to UET admission.',
   },
 ];
